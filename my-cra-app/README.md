@@ -7,3 +7,5 @@ Til að keyra:
 ```bash
 npm start
 ```
+
+
