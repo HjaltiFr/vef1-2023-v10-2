@@ -29,15 +29,56 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+    <!DOCTYPE html>
+    <html><head>
+        <title>Klukkan</title>
+      </head>
+      
+      <body style="margin: 0px;">
+        <canvas id="canvas" width="670" height="80">
+        <script>
+          var canvas = document.getElementById("canvas");
+      var c = canvas.getContext("2d");
+      
+      function drawClock() {
+          c.fillStyle = 'lightgray';
+          c.fillRect(0, 0, canvas.width, canvas.height);
+          
+          var now = new Date(),
+              h = now.getHours(),
+              m = now.getMinutes(),
+              s = now.getSeconds(),
+              ampm = (h < 12 ? 'AM' : 'PM');
+      
+          h = (h % 12);
+          h = addLeadingZeroWhenNecessary(h);
+          m = addLeadingZeroWhenNecessary(m);
+          s = addLeadingZeroWhenNecessary(s);
+          
+          var clockText = h + ':' + m + ':' + s + ' ' + ampm,
+              x = 10,
+              y = 60;
+          
+      
+          c.fillStyle = '#00DB84';
+      
+          c.font = '37pt Arial';
+          c.strokeStyle = 'gray';
+          c.fillText(clockText, x, y);
+          c.strokeText(clockText, x, y);
+      }
+      
+      function addLeadingZeroWhenNecessary(s){
+          return (s < 10 ? '0' : '') + s;
+      }
+      
+      drawClock();
+      setInterval(drawClock, 1000);
+        </script>
+      
+      </canvas>
+    </body>
+    </html>
+  
   </body>
 </html>
