@@ -9,4 +9,4 @@ npm start
 ```
 
 
-setti upp klukku Web API. Það er í klukka.html.
+setti upp klukku Web API. Það er í index.html.
